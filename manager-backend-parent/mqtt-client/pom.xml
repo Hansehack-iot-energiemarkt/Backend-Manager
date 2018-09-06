@@ -14,5 +14,10 @@
 			<groupId>org.eclipse.paho</groupId>
 			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>de.hansehack.team10</groupId>
+			<artifactId>connection-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
