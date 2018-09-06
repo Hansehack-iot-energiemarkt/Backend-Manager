@@ -1,4 +1,4 @@
-package de.hansehack.i2c.client;
+package de.hansehack.team10.i2c.client;
 
 import com.pi4j.io.gpio.GpioController;
 
