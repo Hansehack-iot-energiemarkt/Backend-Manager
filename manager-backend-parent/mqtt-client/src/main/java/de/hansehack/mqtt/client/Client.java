@@ -1,6 +1,7 @@
 package de.hansehack.mqtt.client;
 
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
+import org.eclipse.paho.client.mqttv3.MqttClientPersistence;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -9,8 +10,8 @@ public class Client extends MqttAsyncClient {
 
 	public static final int QOS = 2; // quality of service
 
-	public Client(final String broker, final String clientId) throws MqttException {
-		super(broker, clientId);
+	public Client(final String broker, final String clientId, final MqttClientPersistence persistence) throws MqttException {
+		super(broker, clientId, persistence);
 
 		final MqttConnectOptions connectOptions = new MqttConnectOptions();
 		connectOptions.setCleanSession(true); // do not remember the state of the client
