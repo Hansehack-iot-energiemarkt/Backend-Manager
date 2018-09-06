@@ -70,5 +70,6 @@
 		<module>connection-api</module>
 		<module>iota-client</module>
 		<module>ssimulated-clients</module>
+		<module>backend-manager</module>
 	</modules>
 </project>
