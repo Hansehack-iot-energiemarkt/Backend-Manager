@@ -2,6 +2,9 @@ package de.hansehack.team10.connection.api;
 
 import java.time.Duration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Energie extends MessagePayload{
 	/**
 	 * Energie needed per Hour
@@ -15,7 +18,8 @@ public class Energie extends MessagePayload{
 	 * @param energieAmount
 	 * @param energiePerHour
 	 */
-	public Energie(final int energieAmount, final Duration energiePerHour) {
+	@JsonCreator
+	public Energie(@JsonProperty(value="energieAmount") final int energieAmount,@JsonProperty(value="energiePerHour") final Duration energiePerHour) {
 		super();
 		this.energieAmount = energieAmount;
 		this.energiePerHour = energiePerHour;

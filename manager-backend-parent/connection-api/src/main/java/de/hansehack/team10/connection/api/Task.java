@@ -2,6 +2,10 @@ package de.hansehack.team10.connection.api;
 
 import java.time.Duration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Task extends MessagePayload{
 
 	private final Duration durationOfTask;
@@ -12,7 +16,8 @@ public class Task extends MessagePayload{
 	 * @param durationOfTask
 	 * @param energyAmount
 	 */
-	public Task(final Duration durationOfTask, final int energyAmount) {
+	@JsonCreator(mode=Mode.PROPERTIES)
+	public Task(@JsonProperty(value="durationOfTask") final Duration durationOfTask,@JsonProperty(value="energyAmount") final int energyAmount) {
 		super();
 		this.durationOfTask = durationOfTask;
 		this.energyAmount = energyAmount;

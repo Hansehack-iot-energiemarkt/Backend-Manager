@@ -27,7 +27,7 @@ import de.hansehack.team10.connection.api.Task;
 import de.hansehack.team10.connection.api.Topic;
 
 public class SimulatdMain {
-	private final static String BROKER= "tcp:://10.250.252.184";
+	private final static String BROKER= "tcp://10.250.252.184:1883";
 	private final static String DEVICE="device";
 	private final static MqttClientPersistence store = new MemoryPersistence();
 	private static final List<SimulatedClient> clients = new ArrayList<>();
@@ -44,7 +44,7 @@ public class SimulatdMain {
 			SimulatdMain.clients.add(firstClient);
 			final String deviceNameSecond = SimulatdMain.DEVICE+SimulatdMain.devices.size()+1;
 			SimulatdMain.devices.add(deviceNameSecond);
-			final SimulatedClient secondClient = new SimulatedClient(mqttConnection, SimulatdMain.generateStartupTasks(deviceName), SimulatdMain.generateEnergie(deviceName), deviceName);
+			final SimulatedClient secondClient = new SimulatedClient(mqttConnection, SimulatdMain.generateStartupTasks(deviceNameSecond), SimulatdMain.generateEnergie(deviceNameSecond), deviceNameSecond);
 			SimulatdMain.clients.add(secondClient);
 			
 		} catch (final MqttException e) {
@@ -53,15 +53,16 @@ public class SimulatdMain {
 		}
 		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 		SimulatdMain.clients.forEach(client->{
+			
 			final long nextLong = ThreadLocalRandom.current().nextLong(1, 10);
 			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 10);
 			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.MINUTES);
 		});
 		final Scanner scanner = new Scanner(System.in);
-		final String key = "";
+		String key = "";
 		System.out.println("Press any key to exit");
 		while (key.isEmpty()) {
-			scanner.nextLine();
+			key = scanner.next();
 			
 		}
 		scanner.close();

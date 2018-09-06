@@ -55,6 +55,7 @@ public class SimulatedClient implements Runnable {
 		this.cache = new ArrayDeque<>();
 		this.timer = new Timer(name);
 		this.name = name;
+		this.startup(tasksAtStartup);
 
 	}
 
@@ -96,7 +97,7 @@ public class SimulatedClient implements Runnable {
 		if(messagePayload instanceof Energie) {
 			final Energie newEnergie = (Energie) messagePayload;
 			this.energieLevel.addAndGet(newEnergie.getEnergieAmount());
-			System.out.println("Neuer energielevel"+this.energieLevel.get());
+			System.out.println("Neuer energielevel "+this.energieLevel.get());
 		}
 		//TODO neuen energielevel publishen
 		

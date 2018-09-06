@@ -11,8 +11,6 @@ import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-
 import de.hansehack.team10.connection.api.Connection;
 import de.hansehack.team10.connection.api.Message;
 
@@ -30,7 +28,7 @@ public class Client extends MqttAsyncClient implements Connection {
 		connectOptions.setCleanSession(true); // do not remember the state of the client
 		this.connect(connectOptions);
 		this.mapper = new ObjectMapper();
-		this.mapper.registerModule(new Jdk8Module());
+		this.mapper.findAndRegisterModules();
 	}
 
 	public void sendMessage(final String topic, final String content) {
@@ -56,8 +54,14 @@ public class Client extends MqttAsyncClient implements Connection {
 	public void messageReceivedSubscriber(final String topic, final Consumer<Message> messageConsumer) {
 		try {
 			this.subscribe(topic, Client.QOS, (final String recvTopic, final MqttMessage recvMessage) -> {
-				final Message receivedMessage = this.mapper.readValue(recvMessage.getPayload(), Message.class);
-				messageConsumer.accept(receivedMessage);
+				Message receivedMessage;
+				try {
+					receivedMessage = this.mapper.readValue(recvMessage.getPayload(), Message.class);
+					messageConsumer.accept(receivedMessage);
+				} catch (final Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			});
 		} catch (final MqttException e) {
 			// TODO Auto-generated catch block

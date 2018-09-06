@@ -1,6 +1,14 @@
 package de.hansehack.team10.connection.api;
 
-abstract public class MessagePayload {
-	
-	
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+	@JsonSubTypes.Type(value=Task.class,name="task"),
+	@JsonSubTypes.Type(value=Energie.class,name="energie")
+})
+abstract public class MessagePayload {	
 }

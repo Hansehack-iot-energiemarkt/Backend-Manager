@@ -7,4 +7,16 @@
   </parent>
   <artifactId>backend-manager</artifactId>
   <name>de.hansehack.team10.backend-manager</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.hansehack.team10</groupId>
+  		<artifactId>connection-api</artifactId>
+  		<version>${project.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.hansehack.team10</groupId>
+  		<artifactId>mqtt-client</artifactId>
+  		<version>${project.version}</version>
+  	</dependency>
+  </dependencies>
 </project>

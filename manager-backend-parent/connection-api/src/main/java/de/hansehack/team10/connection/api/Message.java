@@ -1,6 +1,10 @@
 package de.hansehack.team10.connection.api;
 
-public  class Message {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Message {
 
 	private final String deviceName;
 
@@ -13,7 +17,9 @@ public  class Message {
 	 * @param message
 	 * @param topic
 	 */
-	public Message(final String deviceName, final MessagePayload message, final Topic topic) {
+	@JsonCreator(mode=Mode.PROPERTIES)
+	public Message(@JsonProperty(value="deviceName") final String deviceName, @JsonProperty(value="message") final MessagePayload message,
+			@JsonProperty(value="topic") final Topic topic) {
 		super();
 		this.deviceName = deviceName;
 		this.message = message;
