@@ -12,7 +12,11 @@ public enum Topics {
 	/**
 	 * Kann nach energie fragen. 
 	 */
-	Energie("hansehack/energie")
+	Energie("hansehack/energie"),
+	/**
+	 * Gibt den momentanen Energielevel an
+	 */
+	Energielevel("hansehack/energielevel")
 	;
 	/**
 	 * Topic string representation
@@ -25,6 +29,16 @@ public enum Topics {
 	private Topics(final String name) {
 		this.topic = name;
 	}
+
+	/**
+	 * @return the topic
+	 */
+	public String getTopic() {
+		return this.topic;
+	}
+	
+	
+	
 	
 	
 
