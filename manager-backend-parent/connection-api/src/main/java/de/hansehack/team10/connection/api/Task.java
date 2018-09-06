@@ -2,7 +2,7 @@ package de.hansehack.team10.connection.api;
 
 import java.time.Duration;
 
-public class Task {
+public class Task extends MessagePayload{
 
 	private final Duration durationOfTask;
 

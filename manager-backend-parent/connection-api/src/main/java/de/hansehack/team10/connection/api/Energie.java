@@ -2,7 +2,7 @@ package de.hansehack.team10.connection.api;
 
 import java.time.Duration;
 
-public class Energie {
+public class Energie extends MessagePayload{
 	/**
 	 * Energie needed per Hour
 	 */
