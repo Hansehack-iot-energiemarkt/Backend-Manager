@@ -1,29 +1,33 @@
 package de.hansehack.team10.connection.api;
 
-public class MessagePayload {
-	
-	private final String message;
-	
-	
-	
-	
-	
-	
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
+final public class MessagePayload {
 	/**
-	 * @param message
+	 * Energie message
 	 */
-	public MessagePayload(final String message) {
+	private final Optional<Energie> energie;
+	/**
+	 * Task message
+	 */
+	private final Optional<Task> task;
+	/**
+	 * @param energie
+	 * @param task
+	 */
+	public MessagePayload(@Nullable final Energie energie,@Nullable final Task task) {
 		super();
-		this.message = message;
+		this.energie = Optional.ofNullable(energie);
+		this.task = Optional.ofNullable(task);
+		if(!this.energie.isPresent()&&!this.task.isPresent()) {
+			throw new IllegalArgumentException("Einer der beiden Objekte muss present sein"); 
+		}
 	}
-
-
-
-
-
-
-	public String getMessage() {
-		return this.message;
-	}
-
+	
+	
+	
+	
+	
 }
