@@ -1,29 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>de.hansehack.team10</groupId>
-  <artifactId>manager-backend-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>de.hansehack.team10.manager-backend</name>
-  <description>managt in einem endpunkt die endgeräte und die kommunikation zum markt.</description>
-  <packaging>pom</packaging>
-  <properties>
-  	<java.version>10</java.version>
-  </properties>
-  <build>
-  	<pluginManagement>
-  		<plugins>
-  			<plugin>
-  				<groupId>org.apache.maven.plugins</groupId>
-  				<artifactId>maven-compiler-plugin</artifactId>
-  				<version>3.7.0</version>
-  				<configuration>
-  					<release>${java.version}</release>
-  					<target>${java.version}</target>
-  					<source>${java.version}</source>
-  				</configuration>
-  			</plugin>
-  		</plugins>
-  	</pluginManagement>
-  </build>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.hansehack.team10</groupId>
+	<artifactId>manager-backend-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>de.hansehack.team10.manager-backend</name>
+	<description>managt in einem endpunkt die endgeräte und die kommunikation zum markt.</description>
+	<packaging>pom</packaging>
+	<properties>
+		<java.version>10</java.version>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+					<configuration>
+						<release>${java.version}</release>
+						<target>${java.version}</target>
+						<source>${java.version}</source>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.paho</groupId>
+				<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+				<version>1.2.0</version>
+				<type>eclipse-plugin</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 </project>
