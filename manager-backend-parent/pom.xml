@@ -45,5 +45,6 @@
 	<modules>
 		<module>mqtt-client</module>
 		<module>i2c-client</module>
+		<module>iota-client</module>
 	</modules>
 </project>
