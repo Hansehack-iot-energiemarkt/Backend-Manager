@@ -14,5 +14,10 @@
 			<groupId>com.pi4j</groupId>
 			<artifactId>pi4j-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>de.hansehack.team10</groupId>
+			<artifactId>connection-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
