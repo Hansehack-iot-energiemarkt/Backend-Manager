@@ -11,6 +11,7 @@ import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 
 import de.hansehack.team10.connection.api.Connection;
 import de.hansehack.team10.connection.api.Message;
@@ -29,6 +30,7 @@ public class Client extends MqttAsyncClient implements Connection {
 		connectOptions.setCleanSession(true); // do not remember the state of the client
 		this.connect(connectOptions);
 		this.mapper = new ObjectMapper();
+		this.mapper.registerModule(new Jdk8Module());
 	}
 
 	public void sendMessage(final String topic, final String content) {
