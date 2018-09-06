@@ -8,7 +8,9 @@ public enum Topics {
 	/**
 	 * Einen neuen Task anmelden. passiert in der regel beim ersten connect
 	 */
-	TaskNew("hansehack/newTask");
+	TaskNew("hansehack/newTask"),
+	Energie("hansehack/energie")
+	;
 	/**
 	 * Topic string representation
 	 */
