@@ -9,6 +9,9 @@ public enum Topics {
 	 * Einen neuen Task anmelden. passiert in der regel beim ersten connect
 	 */
 	TaskNew("hansehack/newTask"),
+	/**
+	 * Kann nach energie fragen. 
+	 */
 	Energie("hansehack/energie")
 	;
 	/**
