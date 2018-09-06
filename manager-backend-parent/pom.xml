@@ -50,5 +50,6 @@
 	<modules>
 		<module>mqtt-client</module>
 		<module>i2c-client</module>
+		<module>connection-api</module>
 	</modules>
 </project>
