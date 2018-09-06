@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
@@ -18,7 +17,7 @@ import de.hansehack.team10.connection.api.MessagePayload;
 import de.hansehack.team10.connection.api.Task;
 import de.hansehack.team10.connection.api.Topic;
 
-public class SimulatedClient extends TimerTask {
+public class SimulatedClient implements Runnable {
 
 	private final Connection mqttClient;
 	/**

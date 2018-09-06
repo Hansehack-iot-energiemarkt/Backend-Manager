@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
@@ -48,10 +51,11 @@ public class SimulatdMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 		SimulatdMain.clients.forEach(client->{
-			final Timer timer = new Timer(client.getName());
-			timer.schedule(client, ThreadLocalRandom.current().nextLong());
-			SimulatdMain.timers.add(timer);
+			final long nextLong = ThreadLocalRandom.current().nextLong(1, 10);
+			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 10);
+			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.MINUTES);
 		});
 		final Scanner scanner = new Scanner(System.in);
 		final String key = "";
@@ -60,6 +64,7 @@ public class SimulatdMain {
 			scanner.nextLine();
 			
 		}
+		scanner.close();
 	}
 	
 	private static List<Message> generateStartupTasks(final String deviceName){
