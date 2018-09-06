@@ -1,16 +1,13 @@
 package de.hansehack.team10.connection.api;
 
 public class Message {
-	
+
 	private final String deviceName;
-	
+
 	private final MessagePayload message;
-	
+
 	private final String topic;
-	
-	
-	
-	
+
 	/**
 	 * @param deviceName
 	 * @param message
@@ -23,15 +20,12 @@ public class Message {
 		this.topic = topic;
 	}
 
-
-
-
 	public String getMessage() {
-		return this.deviceName+":"+this.message.getMessage()+":"+this.topic;
+		return this.deviceName + ":" + this.message.getMessage() + ":" + this.topic;
 	}
-	
-	
-	
-	
+
+	public String getTopic() {
+		return this.topic;
+	}
 
 }
