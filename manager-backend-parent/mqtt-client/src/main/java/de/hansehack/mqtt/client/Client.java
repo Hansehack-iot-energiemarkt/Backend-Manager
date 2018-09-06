@@ -1,12 +1,17 @@
 package de.hansehack.mqtt.client;
 
+import java.util.function.Consumer;
+
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttClientPersistence;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class Client extends MqttAsyncClient {
+import de.hansehack.team10.connection.api.Connection;
+import de.hansehack.team10.connection.api.Message;
+
+public class Client extends MqttAsyncClient implements Connection{
 
 	public static final int QOS = 2; // quality of service
 
@@ -35,5 +40,17 @@ public class Client extends MqttAsyncClient {
 		System.out.println(" cause: " + e.getCause());
 		System.out.println(" excep: " + e);
 		e.printStackTrace();
+	}
+
+	@Override
+	public void messageReceivedSubscriber(final Consumer<Message> messageConsumer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Consumer<Message> messageSend() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
