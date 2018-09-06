@@ -6,8 +6,24 @@
   <name>de.hansehack.team10.manager-backend</name>
   <description>managt in einem endpunkt die endgeräte und die kommunikation zum markt.</description>
   <packaging>pom</packaging>
+  <properties>
+  	<java.version>10</java.version>
+  </properties>
   <build>
-  	
+  	<pluginManagement>
+  		<plugins>
+  			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-compiler-plugin</artifactId>
+  				<version>3.7.0</version>
+  				<configuration>
+  					<release>${java.version}</release>
+  					<target>${java.version}</target>
+  					<source>${java.version}</source>
+  				</configuration>
+  			</plugin>
+  		</plugins>
+  	</pluginManagement>
   </build>
   
 </project>
