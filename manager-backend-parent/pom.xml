@@ -52,5 +52,6 @@
 		<module>i2c-client</module>
 		<module>connection-api</module>
 		<module>iota-client</module>
+		<module>ssimulated-clients</module>
 	</modules>
 </project>
