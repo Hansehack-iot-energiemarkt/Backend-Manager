@@ -16,11 +16,11 @@ public interface Connection {
 	 * @param messageConsumer {@link Consumer} der aufgerufen wird wenn der Client
 	 *                        eine Nachricht erhalten hat.
 	 */
-	void messageReceivedSubscriber(Consumer<Message> messageConsumer);
+	void messageReceivedSubscriber(String topic,Consumer<Message> messageConsumer);
 
 	/**
 	 * Wird aufgerufen wenn eine Nachricht verschickt werden soll.
 	 */
-	Consumer<Message> messageSend();
+	void messageSend(Message sendMessage);
 
 }
