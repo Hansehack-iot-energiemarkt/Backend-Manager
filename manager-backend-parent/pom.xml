@@ -39,5 +39,6 @@
 
 	<modules>
 		<module>mqtt-client</module>
+		<module>i2c-client</module>
 	</modules>
 </project>
