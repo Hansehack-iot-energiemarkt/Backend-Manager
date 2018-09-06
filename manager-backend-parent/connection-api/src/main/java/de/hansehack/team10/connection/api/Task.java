@@ -32,4 +32,13 @@ public class Task extends MessagePayload{
 		return this.energyAmount;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Task [durationOfTask=" + this.durationOfTask + ", energyAmount=" + this.energyAmount + "]";
+	}
+	
+
 }
