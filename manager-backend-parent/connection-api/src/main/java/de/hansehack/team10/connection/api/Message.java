@@ -1,19 +1,19 @@
 package de.hansehack.team10.connection.api;
 
-public class Message {
+public  class Message {
 
 	private final String deviceName;
 
 	private final MessagePayload message;
 
-	private final String topic;
+	private final Topic topic;
 
 	/**
 	 * @param deviceName
 	 * @param message
 	 * @param topic
 	 */
-	public Message(final String deviceName, final MessagePayload message, final String topic) {
+	public Message(final String deviceName, final MessagePayload message, final Topic topic) {
 		super();
 		this.deviceName = deviceName;
 		this.message = message;
@@ -37,7 +37,7 @@ public class Message {
 	/**
 	 * @return the topic
 	 */
-	public String getTopic() {
+	public Topic getTopic() {
 		return this.topic;
 	}
 
