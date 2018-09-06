@@ -96,6 +96,7 @@ public class SimulatedClient implements Runnable {
 		if(messagePayload instanceof Energie) {
 			final Energie newEnergie = (Energie) messagePayload;
 			this.energieLevel.addAndGet(newEnergie.getEnergieAmount());
+			System.out.println("Neuer energielevel"+this.energieLevel.get());
 		}
 		//TODO neuen energielevel publishen
 		
