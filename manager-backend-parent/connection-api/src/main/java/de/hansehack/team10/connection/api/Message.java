@@ -20,10 +20,23 @@ public class Message {
 		this.topic = topic;
 	}
 
-	public String getMessage() {
-		return this.deviceName + ":" + this.message.getMessage() + ":" + this.topic;
+	/**
+	 * @return the deviceName
+	 */
+	public String getDeviceName() {
+		return this.deviceName;
 	}
 
+	/**
+	 * @return the message
+	 */
+	public MessagePayload getMessage() {
+		return this.message;
+	}
+
+	/**
+	 * @return the topic
+	 */
 	public String getTopic() {
 		return this.topic;
 	}
