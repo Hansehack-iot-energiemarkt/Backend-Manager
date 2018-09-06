@@ -1,6 +1,6 @@
 package de.hansehack.team10.connection.api;
 
-public enum Topics {
+public enum Topic {
 	/**
 	 * Maschine darf einen Task ausführen
 	 */
@@ -26,7 +26,7 @@ public enum Topics {
 	/**
 	 * @param topic
 	 */
-	private Topics(final String name) {
+	private Topic(final String name) {
 		this.topic = name;
 	}
 
