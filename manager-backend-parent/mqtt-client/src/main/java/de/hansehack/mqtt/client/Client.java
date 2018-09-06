@@ -71,7 +71,7 @@ public class Client extends MqttAsyncClient implements Connection {
 		try {
 			final MqttMessage mqMessage = new MqttMessage(this.mapper.writeValueAsBytes(sendMessage));
 			mqMessage.setQos(Client.QOS);
-			this.publish(sendMessage.getTopic(), mqMessage);
+			this.publish(sendMessage.getTopic().getTopic(), mqMessage);
 		} catch (final JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
