@@ -25,6 +25,20 @@ final public class MessagePayload {
 			throw new IllegalArgumentException("Einer der beiden Objekte muss present sein"); 
 		}
 	}
+	/**
+	 * @return the energie
+	 */
+	public Optional<Energie> getEnergie() {
+		return this.energie;
+	}
+	/**
+	 * @return the task
+	 */
+	public Optional<Task> getTask() {
+		return this.task;
+	}
+	
+	
 	
 	
 	
