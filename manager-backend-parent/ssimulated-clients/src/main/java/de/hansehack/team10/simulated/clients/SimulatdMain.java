@@ -40,18 +40,9 @@ public class SimulatdMain {
 		try {
 			final Connection mqttConnection = new Client(SimulatdMain.BROKER, MqttAsyncClient.generateClientId(),
 					SimulatdMain.store);
-			final String deviceName = SimulatdMain.DEVICE + SimulatdMain.devices.size() + 1;
-			SimulatdMain.devices.add(deviceName);
-			final SimulatedClient firstClient = new SimulatedClient(mqttConnection,
-					SimulatdMain.generateStartupTasks(deviceName), SimulatdMain.generateEnergie(deviceName),
-					deviceName);
-			SimulatdMain.clients.add(firstClient);
-			final String deviceNameSecond = SimulatdMain.DEVICE + SimulatdMain.devices.size() + 1;
-			SimulatdMain.devices.add(deviceNameSecond);
-			final SimulatedClient secondClient = new SimulatedClient(mqttConnection,
-					SimulatdMain.generateStartupTasks(deviceNameSecond), SimulatdMain.generateEnergie(deviceNameSecond),
-					deviceNameSecond);
-			SimulatdMain.clients.add(secondClient);
+			IntStream.range(0, 20).forEach(i->{
+				SimulatdMain.createClient(mqttConnection);
+			});
 			producer = new SimulatedProducer(mqttConnection, "device03");
 
 		} catch (final MqttException e) {
@@ -64,7 +55,7 @@ public class SimulatdMain {
 
 			final long nextLong = ThreadLocalRandom.current().nextLong(1, 20);
 			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 20);
-			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.SECONDS);
+			executorService.scheduleWithFixedDelay(client, nextLong, nextLong2, TimeUnit.SECONDS);
 		});
 		final long nextLong = ThreadLocalRandom.current().nextLong(1, 20);
 		final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 20);
@@ -78,6 +69,21 @@ public class SimulatdMain {
 		}
 		scanner.close();
 	}
+
+
+
+
+	private static void createClient(final Connection mqttConnection) {
+		final String deviceName = SimulatdMain.DEVICE + SimulatdMain.devices.size() + 1;
+		SimulatdMain.devices.add(deviceName);
+		final SimulatedClient firstClient = new SimulatedClient(mqttConnection,
+				SimulatdMain.generateStartupTasks(deviceName), SimulatdMain.generateEnergie(deviceName),
+				deviceName);
+		SimulatdMain.clients.add(firstClient);
+	}
+	
+	
+	
 
 	private static List<Message> generateStartupTasks(final String deviceName) {
 		final List<Message> messages = new ArrayList<>();

@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import de.hansehack.team10.connection.api.Connection;
+import de.hansehack.team10.connection.api.EnergieLevel;
 import de.hansehack.team10.connection.api.Message;
 import de.hansehack.team10.connection.api.Offer;
 import de.hansehack.team10.connection.api.Topic;
@@ -40,6 +41,9 @@ public class SimulatedProducer implements Runnable {
 			offer.setPrice(ThreadLocalRandom.current().nextDouble(0.19, 0.30));
 			final Message message = new Message(this.name, offer, Topic.EnergieOffer);
 			this.mqttClient.messageSend(message);
+			final EnergieLevel energieLevel = new EnergieLevel(this.energieLoad.get());
+			final Message energieLevelMessage = new Message(this.name, energieLevel, Topic.Energielevel);
+			this.mqttClient.messageSend(energieLevelMessage);
 		}
 
 	}
