@@ -11,6 +11,14 @@ public class CheckForSell {
 	
 	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CheckForSell [value=" + this.value + ", savedBuy=" + this.savedBuy + ", adress=" + this.adress + "]";
+	}
+
 	/**
 	 * @return the adress
 	 */

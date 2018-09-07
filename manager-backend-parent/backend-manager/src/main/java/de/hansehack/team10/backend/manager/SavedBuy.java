@@ -12,7 +12,7 @@ public class SavedBuy {
 	@JsonIgnore
 	private String deviceName;
 	
-	private String address;
+	
 	
 	private final String type="buy";
 	
@@ -29,19 +29,7 @@ public class SavedBuy {
 		return this.type;
 	}
 
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return this.address;
-	}
-
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(final String address) {
-		this.address = address;
-	}
+	
 
 	/**
 	 * @return the deviceName
@@ -84,5 +72,17 @@ public class SavedBuy {
 	public void setAmount(final int amount) {
 		this.amount = amount;
 	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SavedBuy [id=" + this.id + ", amount=" + this.amount + ", deviceName=" + this.deviceName + ", type=" + this.type + "]";
+	}
+	
+	
 
 }

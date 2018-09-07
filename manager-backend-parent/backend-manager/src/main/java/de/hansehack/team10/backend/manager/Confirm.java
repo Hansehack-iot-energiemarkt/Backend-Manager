@@ -17,6 +17,14 @@ public class Confirm {
 		return this.type;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Confirm [value=" + this.value + ", type=" + this.type + "]";
+	}
+
 	/**
 	 * @return the value
 	 */

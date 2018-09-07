@@ -47,6 +47,7 @@ public class BackendManagerClient {
 				savedOffer.setEnd(offer.getEnd());
 				savedOffer.setPrice(offer.getPrice());
 				savedOffer.setId(this.managerId);
+				savedOffer.setAmount(offer.getAmount());
 				this.offers.add(savedOffer);
 			}
 		});
@@ -94,6 +95,10 @@ public class BackendManagerClient {
 	
 	public void removeOffer(final SavedOffer offer) {
 		this.offers.remove(offer);
+	}
+	
+	public UUID getId() {
+		return this.managerId;
 	}
 
 }

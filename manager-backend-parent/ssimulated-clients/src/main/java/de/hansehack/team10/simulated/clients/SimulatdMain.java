@@ -1,6 +1,7 @@
 package de.hansehack.team10.simulated.clients;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -92,7 +93,7 @@ public class SimulatdMain {
 			final int hours = ThreadLocalRandom.current().nextInt(1, 25);
 			final int energieAmount = ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
 			final Task task = new Task(Duration.ofHours(hours), energieAmount);
-			final Message message = new Message(deviceName, task, Topic.TaskNew);
+			final Message message = new Message(deviceName, task, Topic.TaskNew,LocalDateTime.now());
 			SimulatdMain.tasks.put(message, (canConsume) -> {
 				System.out.println("Maschine " + deviceName + " darf folgenden task zuende führen: " + task);
 			});
@@ -107,7 +108,7 @@ public class SimulatdMain {
 			final int energieAmount = ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
 			final Duration energiePerHour = Duration.ofHours(ThreadLocalRandom.current().nextLong(3600, 24 * 3600 + 1));
 			final Energie energie = new Energie(energieAmount, energiePerHour);
-			final Message message = new Message(deviceName, energie, Topic.Energie);
+			final Message message = new Message(deviceName, energie, Topic.Energie,LocalDateTime.now());
 			messages.add(message);
 		});
 		return messages;

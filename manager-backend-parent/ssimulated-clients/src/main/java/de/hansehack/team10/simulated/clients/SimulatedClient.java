@@ -1,5 +1,6 @@
 package de.hansehack.team10.simulated.clients;
 
+import java.time.LocalDateTime;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.List;
@@ -104,7 +105,7 @@ public class SimulatedClient implements Runnable {
 		
 		
 		this.mqttClient.messageSend(nextEnergie);
-		final Message message = new Message(this.name, new EnergieLevel(this.energieLevel.get()), Topic.Energielevel);
+		final Message message = new Message(this.name, new EnergieLevel(this.energieLevel.get()), Topic.Energielevel,LocalDateTime.now());
 		this.mqttClient.messageSend(message);
 		final int currentEnergieLevel = this.energieLevel.get();
 		this.energieLevel.addAndGet(-1*ThreadLocalRandom.current().nextInt(1, currentEnergieLevel/2));

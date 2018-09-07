@@ -1,10 +1,14 @@
 package de.hansehack.team10.connection.api;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Message {
+	
+	private final LocalDateTime timestamp;
 
 	private final String deviceName;
 
@@ -19,12 +23,24 @@ public class Message {
 	 */
 	@JsonCreator(mode=Mode.PROPERTIES)
 	public Message(@JsonProperty(value="deviceName") final String deviceName, @JsonProperty(value="message") final MessagePayload message,
-			@JsonProperty(value="topic") final Topic topic) {
+			@JsonProperty(value="topic") final Topic topic,@JsonProperty(value="timestamp") final LocalDateTime timestamp) {
 		super();
 		this.deviceName = deviceName;
 		this.message = message;
 		this.topic = topic;
+		this.timestamp=timestamp;
 	}
+	
+	
+
+	/**
+	 * @return the timestamp
+	 */
+	public LocalDateTime getTimestamp() {
+		return this.timestamp;
+	}
+
+
 
 	/**
 	 * @return the deviceName

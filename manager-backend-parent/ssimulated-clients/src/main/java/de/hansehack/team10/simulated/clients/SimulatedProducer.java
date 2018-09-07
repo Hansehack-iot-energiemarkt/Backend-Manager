@@ -39,10 +39,10 @@ public class SimulatedProducer implements Runnable {
 			offer.setBegin(LocalDateTime.now().plusSeconds(20));
 			offer.setEnd(LocalDateTime.now().plusSeconds(200));
 			offer.setPrice(ThreadLocalRandom.current().nextDouble(0.19, 0.30));
-			final Message message = new Message(this.name, offer, Topic.EnergieOffer);
+			final Message message = new Message(this.name, offer, Topic.EnergieOffer,LocalDateTime.now());
 			this.mqttClient.messageSend(message);
 			final EnergieLevel energieLevel = new EnergieLevel(this.energieLoad.get());
-			final Message energieLevelMessage = new Message(this.name, energieLevel, Topic.Energielevel);
+			final Message energieLevelMessage = new Message(this.name, energieLevel, Topic.Energielevel,LocalDateTime.now());
 			this.mqttClient.messageSend(energieLevelMessage);
 		}
 

@@ -1,7 +1,6 @@
 package de.hansehack.team10.backend.manager;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,23 +51,11 @@ public class SavedOffer {
 	@JsonIgnore
 	private String address;
 	
-	Optional<Adress> adress;
+	
 	
 	
 
-	/**
-	 * @return the adress
-	 */
-	public Optional<Adress> getAdress() {
-		return this.adress;
-	}
-
-	/**
-	 * @param adress the adress to set
-	 */
-	public void setAdress(final Optional<Adress> adress) {
-		this.adress = adress;
-	}
+	
 
 	/**
 	 * @return the address
@@ -142,5 +129,18 @@ public class SavedOffer {
 	public void setPrice(final double price) {
 		this.price = price;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SavedOffer [amount=" + this.amount + ", type=" + this.type + ", id=" + this.id + ", begin=" + this.begin + ", end=" + this.end
+				+ ", price=" + this.price + ", address=" + this.address + "]";
+	}
+
+	
+	
+	
 
 }
