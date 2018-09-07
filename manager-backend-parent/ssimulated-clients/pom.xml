@@ -7,16 +7,16 @@
 		<artifactId>manager-backend-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>connection-api</artifactId>
-	<name>de.hansehack.team10.connection-api</name>
-	<description>Interface um mit den einzelnen verbindungen zu verbinden und daten zu senden oder zu empfangen</description>
+	<artifactId>ssimulated-clients</artifactId>
 	<dependencies>
-
-
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-annotations</artifactId>
-	</dependency>
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.hansehack.team10</groupId>
+			<artifactId>mqtt-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
-
 </project>
