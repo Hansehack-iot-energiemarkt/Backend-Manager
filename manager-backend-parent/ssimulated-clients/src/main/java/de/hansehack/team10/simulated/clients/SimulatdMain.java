@@ -54,9 +54,9 @@ public class SimulatdMain {
 		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 		SimulatdMain.clients.forEach(client->{
 			
-			final long nextLong = ThreadLocalRandom.current().nextLong(1, 10);
-			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 10);
-			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.MINUTES);
+			final long nextLong = ThreadLocalRandom.current().nextLong(1, 20);
+			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 20);
+			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.SECONDS);
 		});
 		final Scanner scanner = new Scanner(System.in);
 		String key = "";

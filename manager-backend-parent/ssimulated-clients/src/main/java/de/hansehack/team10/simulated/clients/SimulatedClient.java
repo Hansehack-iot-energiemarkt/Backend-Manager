@@ -7,11 +7,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.Timer;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 import de.hansehack.team10.connection.api.Connection;
 import de.hansehack.team10.connection.api.Energie;
+import de.hansehack.team10.connection.api.EnergieLevel;
 import de.hansehack.team10.connection.api.Message;
 import de.hansehack.team10.connection.api.MessagePayload;
 import de.hansehack.team10.connection.api.Task;
@@ -99,10 +101,13 @@ public class SimulatedClient implements Runnable {
 			this.energieLevel.addAndGet(newEnergie.getEnergieAmount());
 			System.out.println("Neuer energielevel "+this.energieLevel.get());
 		}
-		//TODO neuen energielevel publishen
 		
 		
 		this.mqttClient.messageSend(nextEnergie);
+		final Message message = new Message(this.name, new EnergieLevel(this.energieLevel.get()), Topic.Energielevel);
+		this.mqttClient.messageSend(message);
+		final int currentEnergieLevel = this.energieLevel.get();
+		this.energieLevel.addAndGet(-1*ThreadLocalRandom.current().nextInt(1, currentEnergieLevel/2));
 	}
 
 	/**
