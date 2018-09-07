@@ -31,7 +31,6 @@ public class Main {
 			System.out.println("Press any key to exit");
 			while (key.isEmpty()) {
 				 key = scanner.next();
-				
 			}
 			scanner.close();
 			executorService.awaitTermination(5, TimeUnit.SECONDS);
