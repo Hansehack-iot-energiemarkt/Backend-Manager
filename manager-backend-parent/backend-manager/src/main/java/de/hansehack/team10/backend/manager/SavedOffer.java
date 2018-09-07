@@ -9,6 +9,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class SavedOffer {
 	
 	private int amount;
+	
+	private String type="sell";
+	
+	
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return this.type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(final String type) {
+		this.type = type;
+	}
 
 	/**
 	 * @return the amount

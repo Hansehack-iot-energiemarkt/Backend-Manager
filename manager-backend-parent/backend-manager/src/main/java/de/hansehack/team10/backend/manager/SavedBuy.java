@@ -14,8 +14,20 @@ public class SavedBuy {
 	
 	private String address;
 	
+	private final String type="buy";
 	
 	
+	
+	
+	
+	
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return this.type;
+	}
 
 	/**
 	 * @return the address

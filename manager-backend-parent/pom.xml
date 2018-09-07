@@ -71,5 +71,6 @@
 		<module>iota-client</module>
 		<module>ssimulated-clients</module>
 		<module>backend-manager</module>
+		<module>restapi</module>
 	</modules>
 </project>

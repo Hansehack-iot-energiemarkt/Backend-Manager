@@ -3,6 +3,8 @@ package de.hansehack.team10.backend.manager;
 public class Adress {
 
 	private String adress;
+	
+	
 
 	/**
 	 * @return the adress

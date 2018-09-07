@@ -3,6 +3,19 @@ package de.hansehack.team10.backend.manager;
 public class Confirm {
 	
 	private boolean value;
+	
+	private final String type="confirm";
+	
+	
+	
+	
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return this.type;
+	}
 
 	/**
 	 * @return the value
