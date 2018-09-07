@@ -1,6 +1,9 @@
 package de.hansehack.team10.backend.manager;
 
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -20,6 +23,9 @@ public class Main {
 			final Connection i2cConnection = null;
 			final BackendManagerClient backendManagerClient = new BackendManagerClient(mqttConnection, i2cConnection);
 			backendManagerClient.start();
+			final ExecutorService executorService = Executors.newFixedThreadPool(2);
+			final IotaClient client = new IotaClient(backendManagerClient);
+			executorService.submit(client);
 			final Scanner scanner = new Scanner(System.in);
 			String key = "";
 			System.out.println("Press any key to exit");
@@ -28,7 +34,8 @@ public class Main {
 				
 			}
 			scanner.close();
-		} catch (final MqttException e) {
+			executorService.awaitTermination(5, TimeUnit.SECONDS);
+		} catch (final MqttException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

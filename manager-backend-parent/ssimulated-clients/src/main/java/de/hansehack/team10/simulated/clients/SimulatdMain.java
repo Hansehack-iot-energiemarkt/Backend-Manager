@@ -35,7 +35,7 @@ public class SimulatdMain {
 	private static Map<Message, Consumer<Message>> tasks = new LinkedHashMap<>();
 	private static List<Timer> timers = new ArrayList<>();
 	public static void main(final String[] args) {
-		
+		SimulatedProducer producer;
 		try {
 			final Connection mqttConnection = new Client(SimulatdMain.BROKER, MqttAsyncClient.generateClientId(), SimulatdMain.store);
 			final String deviceName = SimulatdMain.DEVICE+SimulatdMain.devices.size()+1;
@@ -46,10 +46,12 @@ public class SimulatdMain {
 			SimulatdMain.devices.add(deviceNameSecond);
 			final SimulatedClient secondClient = new SimulatedClient(mqttConnection, SimulatdMain.generateStartupTasks(deviceNameSecond), SimulatdMain.generateEnergie(deviceNameSecond), deviceNameSecond);
 			SimulatdMain.clients.add(secondClient);
+			producer = new SimulatedProducer(mqttConnection, "device03");
 			
 		} catch (final MqttException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return;
 		}
 		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 		SimulatdMain.clients.forEach(client->{
@@ -58,6 +60,9 @@ public class SimulatdMain {
 			final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 20);
 			executorService.scheduleAtFixedRate(client, nextLong, nextLong2, TimeUnit.SECONDS);
 		});
+		final long nextLong = ThreadLocalRandom.current().nextLong(1, 20);
+		final long nextLong2 = ThreadLocalRandom.current().nextLong(1, 20);
+		executorService.scheduleWithFixedDelay(producer, nextLong, nextLong2, TimeUnit.SECONDS);
 		final Scanner scanner = new Scanner(System.in);
 		String key = "";
 		System.out.println("Press any key to exit");

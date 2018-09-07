@@ -16,7 +16,11 @@ public enum Topic {
 	/**
 	 * Gibt den momentanen Energielevel an
 	 */
-	Energielevel("hansehack/energielevel")
+	Energielevel("hansehack/energielevel"),
+	/**
+	 * Energie bereitstellen
+	 */
+	EnergieOffer("hansehack/energieoffer")
 	;
 	/**
 	 * Topic string representation
