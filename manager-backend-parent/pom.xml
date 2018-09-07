@@ -72,5 +72,6 @@
 		<module>ssimulated-clients</module>
 		<module>backend-manager</module>
 		<module>restapi</module>
+		<module>gui</module>
 	</modules>
 </project>
