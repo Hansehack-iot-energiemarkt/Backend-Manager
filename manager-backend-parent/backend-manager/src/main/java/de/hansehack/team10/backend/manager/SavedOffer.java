@@ -1,11 +1,28 @@
 package de.hansehack.team10.backend.manager;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class SavedOffer {
+	
+	private int amount;
+
+	/**
+	 * @return the amount
+	 */
+	public int getAmount() {
+		return this.amount;
+	}
+
+	/**
+	 * @param amount the amount to set
+	 */
+	public void setAmount(final int amount) {
+		this.amount = amount;
+	}
 
 	private UUID id;
 
@@ -16,6 +33,24 @@ public class SavedOffer {
 	private double price;
 	@JsonIgnore
 	private String address;
+	
+	Optional<Adress> adress;
+	
+	
+
+	/**
+	 * @return the adress
+	 */
+	public Optional<Adress> getAdress() {
+		return this.adress;
+	}
+
+	/**
+	 * @param adress the adress to set
+	 */
+	public void setAdress(final Optional<Adress> adress) {
+		this.adress = adress;
+	}
 
 	/**
 	 * @return the address

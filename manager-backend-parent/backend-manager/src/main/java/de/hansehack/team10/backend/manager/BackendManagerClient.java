@@ -87,5 +87,13 @@ public class BackendManagerClient {
 	public List<SavedBuy> getBuys() {
 		return this.buys;
 	}
+	
+	public void removeBuy(final SavedBuy buy) {
+		this.buys.remove(buy);
+	}
+	
+	public void removeOffer(final SavedOffer offer) {
+		this.offers.remove(offer);
+	}
 
 }
